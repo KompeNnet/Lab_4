@@ -79,6 +79,7 @@
     <Compile Include="Helpers\Hierarchy.cs" />
     <Compile Include="Helpers\ItemInList.cs" />
     <Compile Include="Helpers\LoaderManager.cs" />
+    <Compile Include="Helpers\IPlugin.cs" />
     <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Loaders\BookLoader.cs" />
     <Compile Include="Loaders\EncyclopediaLoader.cs" />

@@ -15,3 +15,11 @@ new Signature
 
 Folder plugins
 
+
+
+MainGrid
+-- MainGroupBox (content)
+----
+----
+-- ListView
+-- Button

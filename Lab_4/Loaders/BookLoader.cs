@@ -6,10 +6,12 @@ using System.Windows;
 using System.Windows.Controls;
 using Lab_4.Books;
 using Lab_4.Helpers;
+using System.Reflection;
+using System;
 
 namespace Lab_4.Loaders
 {
-    class BookLoader
+    public class BookLoader
     {
         public virtual dynamic Create(GroupBox g)
         {
@@ -41,6 +43,10 @@ namespace Lab_4.Loaders
             ComboBox cb = FormCreator.CreateComboBox("ChooseGenre", new Thickness(10, 211, 0, 0), LoaderManager.GetChildren("Book"));
             cb.SelectionChanged += new SelectionChangedEventHandler(SelectionChanged);
             g.Children.Add(cb);
+
+            Button btn = FormCreator.CreateButton("BtnLoadPlugin", "Load plugin", new Thickness(10, 330, 0, 0), BtnLoadPlugin_Click);
+            btn.Width = 134;
+            g.Children.Add(btn);
 
             return g;
         }
@@ -172,6 +178,33 @@ namespace Lab_4.Loaders
                 }
                 reader.Dispose();
                 reader.Close();
+            }
+        }
+
+        public static List<Type> GetTypes<T>(Assembly assembly)
+        {
+            if (!typeof(T).IsInterface)
+                return null;
+
+            return assembly.GetTypes()
+                .Where(x => x.GetInterface(typeof(T).Name) != null)
+                .ToList<Type>();
+        }
+
+        private void BtnLoadPlugin_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog()
+            {
+                Filter = "DLL files | *.dll"
+            };
+            if (dlg.ShowDialog() == true)
+            {
+                Assembly consoleAssembly = Assembly.LoadFrom(dlg.FileName);
+                List<Type> pluginTypes = GetTypes<IPlugin>(consoleAssembly);
+                if (pluginTypes.Count != 0)
+                {
+
+                }
             }
         }
 

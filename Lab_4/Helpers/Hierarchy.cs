@@ -7,10 +7,10 @@ using Lab_4.Loaders;
 
 namespace Lab_4.Helpers
 {
-    class Hierarchy
+    public class Hierarchy
     {
         public List<string> BookChild { get; set; }
-        internal BookLoader Loader { get; set; }
+        public BookLoader Loader { get; set; }
 
         public Hierarchy(BookLoader loader, List<string> bookChild)
         {
