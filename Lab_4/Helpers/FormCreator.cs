@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -51,7 +52,7 @@ namespace Lab_4.Helpers
             return g;
         }
 
-        public static ComboBox CreateComboBox(string name, Thickness margin, string[] items)
+        public static ComboBox CreateComboBox(string name, Thickness margin, List<string> items)
         {
             ComboBox c = new ComboBox();
             c.Name = name;

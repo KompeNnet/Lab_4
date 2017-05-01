@@ -76,6 +76,7 @@
     <Compile Include="Books\History\Art.cs" />
     <Compile Include="Books\History\Biography.cs" />
     <Compile Include="Helpers\FormCreator.cs" />
+    <Compile Include="Helpers\Hierarchy.cs" />
     <Compile Include="Helpers\ItemInList.cs" />
     <Compile Include="Helpers\LoaderManager.cs" />
     <Compile Include="Helpers\Serializer.cs" />

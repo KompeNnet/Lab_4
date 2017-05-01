@@ -38,7 +38,7 @@ namespace Lab_4.Loaders
             g.Children.Add(FormCreator.CreateTextBox("InpPublishing", b.PublishingOffice, new Thickness(10, 156, 0, 0)));
             g.Children.Add(FormCreator.CreateLabel("Book genre", new Thickness(10, 183, 0, 0)));
 
-            ComboBox cb = FormCreator.CreateComboBox("ChooseGenre", new Thickness(10, 211, 0, 0), new string[] { "Encyclopedia", "Fiction", "Historical" });
+            ComboBox cb = FormCreator.CreateComboBox("ChooseGenre", new Thickness(10, 211, 0, 0), LoaderManager.GetChildren("Book"));
             cb.SelectionChanged += new SelectionChangedEventHandler(SelectionChanged);
             g.Children.Add(cb);
 
@@ -49,15 +49,9 @@ namespace Lab_4.Loaders
         {
             Grid g = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
 
-            Button btnTemp = FormCreator.CreateButton("BtnAdd", "Add", new Thickness(10, 0, 0, 0), BtnAdd_Click);
-            btnTemp.IsEnabled = LoaderManager.resultList.Contains(bookType);
-            g.Children.Add(btnTemp);
-
+            g.Children.Add(FormCreator.CreateButton("BtnAdd", "Add", new Thickness(10, 0, 0, 0), BtnAdd_Click));
             g.Children.Add(FormCreator.CreateButton("BtnRemove", "Remove", new Thickness(75, 0, 0, 0), BtnRemove_Click));
-
-            btnTemp = FormCreator.CreateButton("BtnSubmit", "Submit", new Thickness(140, 0, 0, 0), BtnSubmit_Click);
-            btnTemp.IsEnabled = LoaderManager.resultList.Contains(bookType);
-            g.Children.Add(btnTemp);
+            g.Children.Add(FormCreator.CreateButton("BtnSubmit", "Submit", new Thickness(140, 0, 0, 0), BtnSubmit_Click));
             g.Children.Add(FormCreator.CreateButton("BtnSerialize", "Serialize", new Thickness(205, 0, 0, 0), BtnSerialize_Click));
             g.Children.Add(FormCreator.CreateButton("BtnDeserialize", "Deserialize", new Thickness(270, 0, 0, 0), BtnDeserialize_Click));
 
@@ -84,7 +78,13 @@ namespace Lab_4.Loaders
             dynamic book = Create(gr);                              // create new book based on layout
 
             var temp = ((Grid)gr.Content).Children;                 // get all children of MainGroupBox
-            string type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();   // get pre-last GroupBox Header, because last one is ButtonGroupBox
+            string type;
+            try
+            {
+                type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();   // get pre-last GroupBox Header, because last one is ButtonGroupBox
+            }
+            catch { type = "Book"; }
+
 
             ListView bookListForm = g.Children.OfType<ListView>().First(x => x.Name == "BookListForm"); // find BookListForm
             bookListForm.Items.Add(new ItemInList { Type = type, Name = book.Name, Author = book.Author, Data = book });
@@ -110,7 +110,15 @@ namespace Lab_4.Loaders
             dynamic book = Create(gr);
 
             var temp = ((Grid)gr.Content).Children;
-            string type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();
+            string type;
+            try
+            {
+                type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();
+            }
+            catch
+            {
+                type = "Book";
+            }
 
             ListView bookListForm = g.Children.OfType<ListView>().First(x => x.Name == "BookListForm");
             bookListForm.Items[bookListForm.SelectedIndex] = new ItemInList { Type = type, Name = book.Name, Author = book.Author, Data = book };

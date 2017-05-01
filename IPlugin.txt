@@ -1,0 +1,17 @@
+IPlugin
+abstract methods
+
+Plugin
+- Manager
+implement IPlugin
+new Loader
+new Book
+"Book"
+"Parent"
+new Signature
+
+- Loader
+- Book
+
+Folder plugins
+
