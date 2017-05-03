@@ -9,17 +9,3 @@ new Book
 "Book"
 "Parent"
 new Signature
-
-- Loader
-- Book
-
-Folder plugins
-
-
-
-MainGrid
--- MainGroupBox (content)
-----
-----
--- ListView
--- Button

@@ -117,14 +117,7 @@ namespace Lab_4.Loaders
 
             var temp = ((Grid)gr.Content).Children;
             string type;
-            try
-            {
-                type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();
-            }
-            catch
-            {
-                type = "Book";
-            }
+            try { type = ((GroupBox)temp[temp.Count - 2]).Header.ToString(); } catch { type = "Book"; }
 
             ListView bookListForm = g.Children.OfType<ListView>().First(x => x.Name == "BookListForm");
             bookListForm.Items[bookListForm.SelectedIndex] = new ItemInList { Type = type, Name = book.Name, Author = book.Author, Data = book };
@@ -159,25 +152,32 @@ namespace Lab_4.Loaders
             Grid g = (Grid)gr.Parent;
             ListView bookListForm = g.Children.OfType<ListView>().First(x => x.Name == "BookListForm");
 
-            OpenFileDialog dlg = new OpenFileDialog()
-            {
-                Filter = "JSON files | *.json"
-            };
+            OpenFileDialog dlg = new OpenFileDialog() { Filter = "JSON files | *.json" };
             if (dlg.ShowDialog() == true)
             {
                 StreamReader reader = new StreamReader(dlg.OpenFile());
                 string item;
+                string loadingErrors = "";
                 while ((item = reader.ReadLine()) != null)
                 {
-                    // indexof(':')?
                     string[] words = item.Split(':');
                     item = item.Substring(words[0].Length + 1, item.Length - words[0].Length - 1);
-                    var loader = LoaderManager.GetLoader(words[0]);
-                    Book book = loader.Deserialize(item);
-                    bookListForm.Items.Add(new ItemInList { Type = words[0], Name = book.Name, Author = book.Author, Data = book });
+                    {
+                        try
+                        {
+                            var loader = LoaderManager.GetLoader(words[0]);
+                            Book book = loader.Deserialize(item);
+                            bookListForm.Items.Add(new ItemInList { Type = words[0], Name = book.Name, Author = book.Author, Data = book });
+                        }
+                        catch
+                        {
+                            loadingErrors += words[0] + "\n";
+                        }
+                    }
                 }
                 reader.Dispose();
                 reader.Close();
+                MessageBox.Show(loadingErrors, "Unknown types were not serializated:", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -188,7 +188,7 @@ namespace Lab_4.Loaders
 
             return assembly.GetTypes()
                 .Where(x => x.GetInterface(typeof(T).Name) != null)
-                .ToList<Type>();
+                .ToList();
         }
 
         private void BtnLoadPlugin_Click(object sender, RoutedEventArgs e)
@@ -199,12 +199,31 @@ namespace Lab_4.Loaders
             };
             if (dlg.ShowDialog() == true)
             {
-                Assembly consoleAssembly = Assembly.LoadFrom(dlg.FileName);
-                List<Type> pluginTypes = GetTypes<IPlugin>(consoleAssembly);
+                Assembly mainAssembly = Assembly.LoadFrom(dlg.FileName);
+                List<Type> pluginTypes = GetTypes<IPlugin>(mainAssembly);
                 if (pluginTypes.Count != 0)
                 {
-
+                    foreach (Type item in pluginTypes)
+                    {
+                        IPlugin plugin = Activator.CreateInstance(item) as IPlugin;
+                        LoaderManager.AddLoader(plugin.GetName(), plugin.GetParent(), plugin.GetHierarchy());
+                    }
                 }
+                GroupBox gr = GetMainGroupBox(sender);                  // MainGroupBox
+                Grid g = (Grid)gr.Parent;                               // MainGrid
+
+                dynamic book = Create(gr);                              // create new book based on layout
+
+                var temp = ((Grid)gr.Content).Children;                 // get all children of MainGroupBox
+                string type;
+                try
+                {
+                    type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();   // get pre-last GroupBox Header, because last one is ButtonGroupBox
+                }
+                catch { type = "Book"; }
+
+                BookLoader loader = LoaderManager.GetLoader(type);
+                loader.Load(book);
             }
         }
 

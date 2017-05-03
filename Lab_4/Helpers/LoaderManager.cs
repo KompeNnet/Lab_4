@@ -35,7 +35,7 @@ namespace Lab_4.Helpers
             return loaderDict[key].BookChild;
         }
 
-        public void AddLoader(string key, string parent, Hierarchy member)
+        public static void AddLoader(string key, string parent, Hierarchy member)
         {
             loaderDict.Add(key, member);
             loaderDict[parent].BookChild.Add(key);

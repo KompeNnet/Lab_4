@@ -5,11 +5,10 @@ using System.Windows.Controls;
 using Lab_4.Books;
 using Lab_4.Books.Fictions;
 using Lab_4.Helpers;
-using Lab_4.Loaders;
 
 namespace Lab_4.Loaders.FictionsLoaders
 {
-    class HorrorLoader : FictionLoader
+    public class HorrorLoader : FictionLoader
     {
         public override dynamic Create(GroupBox g)
         {
