@@ -42,7 +42,7 @@ namespace Lab_4.Loaders.FictionsLoaders
             GroupBox fictionGroupBox = g.Children.OfType<GroupBox>().First(x => x.Name == "FictionGroup");
             IEnumerable<ComboBox> cbList = ((Grid)fictionGroupBox.Content).Children.OfType<ComboBox>();
             ComboBox genreComboBox = cbList.First(x => x.Name == "ChooseFictType");
-            genreComboBox.SelectedIndex = 1;
+            genreComboBox.SelectedValue = "Travelling";
 
             return g;
         }

@@ -39,7 +39,7 @@ namespace Lab_4.Loaders.FictionsLoaders
             cb.SelectionChanged += new SelectionChangedEventHandler(SelectionChanged);
             grg.Children.Add(cb);
 
-            GroupBox gr = FormCreator.CreateGroupBox("FictFantasticTalesGroup", "Fantastic Tales", new Thickness(329, 0, 0, 0), 171, 361);
+            GroupBox gr = FormCreator.CreateGroupBox("FictFantasticTalesGroup", "FantasticTales", new Thickness(329, 0, 0, 0), 171, 361);
             gr.Content = grg;
 
             g.Children.Add(gr);
@@ -47,7 +47,7 @@ namespace Lab_4.Loaders.FictionsLoaders
             GroupBox fictionGroupBox = g.Children.OfType<GroupBox>().First(x => x.Name == "FictionGroup");
             IEnumerable<ComboBox> cbList = ((Grid)fictionGroupBox.Content).Children.OfType<ComboBox>();
             ComboBox genreComboBox = cbList.First(x => x.Name == "ChooseFictType");
-            genreComboBox.SelectedIndex = 0;
+            genreComboBox.SelectedValue = "FantasticTales";
 
             return g;
         }

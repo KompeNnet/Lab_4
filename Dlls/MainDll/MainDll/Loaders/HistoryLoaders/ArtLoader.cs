@@ -42,7 +42,7 @@ namespace Lab_4.Loaders.HistoryLoaders
             GroupBox ftGroupBox = g.Children.OfType<GroupBox>().First(x => x.Name == "HistoricalGroup");
             IEnumerable<ComboBox> cbList = ((Grid)ftGroupBox.Content).Children.OfType<ComboBox>();
             ComboBox genreComboBox = cbList.First(x => x.Name == "ChooseHistType");
-            genreComboBox.SelectedIndex = 0;
+            genreComboBox.SelectedValue = "Art";
 
             return g;
         }
