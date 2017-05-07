@@ -21,7 +21,7 @@ namespace Lab_4.Loaders.FictionsLoaders
             
             IEnumerable<CheckBox> cbList = ((Grid)horrorGroupBox.Content).Children.OfType<CheckBox>();
 
-            t.IsPsyhological = cbList.First(x => x.Name == "CheckFictHorrIsPsychologacal").IsChecked.Value;
+            t.IsPsyhological = cbList.First(x => x.Name == "CheckFictHorrIsPsychological").IsChecked.Value;
             return t;
         }
 

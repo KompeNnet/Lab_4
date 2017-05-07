@@ -177,7 +177,10 @@ namespace Lab_4.Loaders
                 }
                 reader.Dispose();
                 reader.Close();
-                MessageBox.Show(loadingErrors, "Unknown types were not serializated:", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (loadingErrors != "")
+                {
+                    MessageBox.Show(loadingErrors, "Unknown types were not serializated:", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
