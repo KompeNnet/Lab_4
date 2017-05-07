@@ -188,7 +188,7 @@ namespace Lab_4.Loaders
 
             return assembly.GetTypes()
                 .Where(x => x.GetInterface(typeof(T).Name) != null)
-                .ToList<Type>();
+                .ToList();
         }
 
         private void BtnLoadPlugin_Click(object sender, RoutedEventArgs e)
@@ -199,8 +199,8 @@ namespace Lab_4.Loaders
             };
             if (dlg.ShowDialog() == true)
             {
-                Assembly consoleAssembly = Assembly.LoadFrom(dlg.FileName);
-                List<Type> pluginTypes = GetTypes<IPlugin>(consoleAssembly);
+                Assembly mainAssembly = Assembly.LoadFrom(dlg.FileName);
+                List<Type> pluginTypes = GetTypes<IPlugin>(mainAssembly);
                 if (pluginTypes.Count != 0)
                 {
                     foreach (Type item in pluginTypes)

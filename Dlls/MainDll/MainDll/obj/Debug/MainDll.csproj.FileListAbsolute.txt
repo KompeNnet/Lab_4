@@ -5,3 +5,5 @@ C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\MainDll\Mai
 C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\MainDll\MainDll\obj\Debug\MainDll.csprojResolveAssemblyReference.cache
 C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\MainDll\MainDll\obj\Debug\MainDll.dll
 C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\MainDll\MainDll\obj\Debug\MainDll.pdb
+C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\MainDll\MainDll\bin\Debug\IPlugin.dll
+C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\MainDll\MainDll\bin\Debug\IPlugin.pdb

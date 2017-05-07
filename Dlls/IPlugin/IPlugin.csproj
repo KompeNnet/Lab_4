@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3FA47065-65C3-4E6E-9D3F-6E7D227D9862}</ProjectGuid>
+    <ProjectGuid>{63FDBFC9-9CEA-4C4F-9A4C-4092FD68A8A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Horror</RootNamespace>
-    <AssemblyName>Horror</AssemblyName>
+    <RootNamespace>IPlugin</RootNamespace>
+    <AssemblyName>IPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,15 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IPlugin">
-      <HintPath>..\..\IPlugin\bin\Debug\IPlugin.dll</HintPath>
+    <Reference Include="MainDll">
+      <HintPath>..\MainDll\MainDll\bin\Debug\MainDll.dll</HintPath>
     </Reference>
-    <Reference Include="MainDll, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\MainDll\MainDll\bin\Debug\MainDll.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,9 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Horror.cs" />
-    <Compile Include="HorrorLoader.cs" />
-    <Compile Include="HorrorPlugin.cs" />
+    <Compile Include="IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
