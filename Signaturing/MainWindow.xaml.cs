@@ -27,13 +27,13 @@ namespace Signaturing
             if (dlg.ShowDialog() == true)
             {
                 path = dlg.FileName;
-                signature.Hash = HashSmth(path);
+                signature.Hash = GetHash(path);
                 signature.Date = File.GetCreationTime(path);
                 GetSignature.IsEnabled = true;
             }
         }
 
-        private byte[] HashSmth(string path)
+        private byte[] GetHash(string path)
         {
             FileStream stream = File.OpenRead(path);
             SHA256Managed sha = new SHA256Managed();

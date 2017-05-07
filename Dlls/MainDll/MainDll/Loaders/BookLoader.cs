@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Lab_4.Books;
 using Lab_4.Helpers;
+using System.Security.Cryptography;
 
 namespace Lab_4.Loaders
 {
@@ -194,6 +195,39 @@ namespace Lab_4.Loaders
                 .ToList();
         }
 
+        private byte[] GetHash(string path)
+        {
+            FileStream stream = File.OpenRead(path);
+            SHA256Managed sha = new SHA256Managed();
+            byte[] hash = sha.ComputeHash(stream);
+            return hash;
+        }
+
+        public bool CheckPluginSignature(string path)
+        {
+            StreamReader reader = new StreamReader(Path.GetDirectoryName(path) + "\\" + Path.GetFileNameWithoutExtension(path) + ".mys");
+            try
+            {
+                Structure signature = Serializer.Deserialize<Structure>(reader.ReadLine());
+                reader.Dispose();
+                reader = new StreamReader(path);
+                Structure plugin = new Structure()
+                {
+                    Date = File.GetCreationTime(path),
+                    Hash = GetHash(path)
+                };
+                reader.Dispose();
+                reader.Close();
+
+                if ((signature.Date == plugin.Date) && (Enumerable.SequenceEqual(signature.Hash, plugin.Hash))) return true;
+                else return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private void BtnLoadPlugin_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog()
@@ -202,31 +236,38 @@ namespace Lab_4.Loaders
             };
             if (dlg.ShowDialog() == true)
             {
-                Assembly mainAssembly = Assembly.LoadFrom(dlg.FileName);
-                List<Type> pluginTypes = GetTypes<IPlugin>(mainAssembly);
-                if (pluginTypes.Count != 0)
+                if (CheckPluginSignature(dlg.FileName))
                 {
-                    foreach (Type item in pluginTypes)
+                    Assembly mainAssembly = Assembly.LoadFrom(dlg.FileName);
+                    List<Type> pluginTypes = GetTypes<IPlugin>(mainAssembly);
+                    if (pluginTypes.Count != 0)
                     {
-                        IPlugin plugin = Activator.CreateInstance(item) as IPlugin;
-                        LoaderManager.AddLoader(plugin.GetName(), plugin.GetParent(), plugin.GetHierarchy());
+                        foreach (Type item in pluginTypes)
+                        {
+                            IPlugin plugin = Activator.CreateInstance(item) as IPlugin;
+                            LoaderManager.AddLoader(plugin.GetName(), plugin.GetParent(), plugin.GetHierarchy());
+                        }
                     }
+                    GroupBox gr = GetMainGroupBox(sender);                  // MainGroupBox
+                    Grid g = (Grid)gr.Parent;                               // MainGrid
+
+                    dynamic book = Create(gr);                              // create new book based on layout
+
+                    var temp = ((Grid)gr.Content).Children;                 // get all children of MainGroupBox
+                    string type;
+                    try
+                    {
+                        type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();   // get pre-last GroupBox Header, because last one is ButtonGroupBox
+                    }
+                    catch { type = "Book"; }
+
+                    BookLoader loader = LoaderManager.GetLoader(type);
+                    loader.Load(book);
                 }
-                GroupBox gr = GetMainGroupBox(sender);                  // MainGroupBox
-                Grid g = (Grid)gr.Parent;                               // MainGrid
-
-                dynamic book = Create(gr);                              // create new book based on layout
-
-                var temp = ((Grid)gr.Content).Children;                 // get all children of MainGroupBox
-                string type;
-                try
+                else
                 {
-                    type = ((GroupBox)temp[temp.Count - 2]).Header.ToString();   // get pre-last GroupBox Header, because last one is ButtonGroupBox
+                    MessageBox.Show("It's not our official plugin =_=\n\nOr something wrong with signature-file. Sorry :(", "What are you doing?!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch { type = "Book"; }
-
-                BookLoader loader = LoaderManager.GetLoader(type);
-                loader.Load(book);
             }
         }
 

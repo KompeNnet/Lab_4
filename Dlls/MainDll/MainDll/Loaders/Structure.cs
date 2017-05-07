@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Signaturing
+namespace Lab_4.Helpers
 {
     public class Structure
     {
