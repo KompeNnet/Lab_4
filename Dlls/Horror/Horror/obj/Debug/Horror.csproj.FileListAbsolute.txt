@@ -7,5 +7,3 @@ C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\Horror\Horr
 C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\Horror\Horror\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\Horror\Horror\bin\Debug\MainDll.pdb
 C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\Horror\Horror\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\Horror\Horror\bin\Debug\IPlugin.dll
-C:\Users\Krompy\Documents\2 курс 2 семестр\OOP\Lab_4\Dlls\Horror\Horror\bin\Debug\IPlugin.pdb

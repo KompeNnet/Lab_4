@@ -2,7 +2,7 @@
 
 namespace Lab_4.Helpers
 {
-    class ItemInList
+    public class ItemInList
     {
         public string Type { get; set; }
         public string Name { get; set; }

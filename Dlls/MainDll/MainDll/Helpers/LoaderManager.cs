@@ -6,10 +6,11 @@ using Lab_4.Books.History;
 using Lab_4.Loaders;
 using Lab_4.Loaders.FictionsLoaders;
 using Lab_4.Loaders.HistoryLoaders;
+using System.Windows;
 
 namespace Lab_4.Helpers
 {
-    class LoaderManager
+    public class LoaderManager
     {
         private static Dictionary<string, Hierarchy> loaderDict = new Dictionary<string, Hierarchy>
         {
@@ -37,8 +38,15 @@ namespace Lab_4.Helpers
 
         public static void AddLoader(string key, string parent, Hierarchy member)
         {
-            loaderDict.Add(key, member);
-            loaderDict[parent].BookChild.Add(key);
+            try
+            {
+                loaderDict.Add(key, member);
+                loaderDict[parent].BookChild.Add(key);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("It is already exists", "Can't add", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

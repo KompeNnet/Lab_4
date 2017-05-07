@@ -21,7 +21,7 @@ namespace Lab_4.Loaders.FictionsLoaders
             
             IEnumerable<CheckBox> cbList = ((Grid)horrorGroupBox.Content).Children.OfType<CheckBox>();
 
-            t.Psyhological = cbList.First(x => x.Name == "CheckFictHorrIsPsychologacal").IsChecked.Value;
+            t.IsPsyhological = cbList.First(x => x.Name == "CheckFictHorrIsPsychologacal").IsChecked.Value;
             return t;
         }
 
@@ -36,9 +36,9 @@ namespace Lab_4.Loaders.FictionsLoaders
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Age limit", new Thickness(10, 10, 73, 0)));
-            grg.Children.Add(FormCreator.CreateTextBox("InpFictHorrAge", h.Countries, new Thickness(10, 38, 10, 0)));
+            grg.Children.Add(FormCreator.CreateTextBox("InpFictHorrAge", h.Age, new Thickness(10, 38, 10, 0)));
 
-            grg.Children.Add(FormCreator.CreateCheckBox("CheckFictHorrIsPsychological", "is Psychological", new Thickness(10, 88, 10, 0), h.IsEarth));
+            grg.Children.Add(FormCreator.CreateCheckBox("CheckFictHorrIsPsychological", "is Psychological", new Thickness(10, 88, 10, 0), h.IsPsyhological));
 
             GroupBox gr = FormCreator.CreateGroupBox("FictHorrorGroup", "Horror", new Thickness(329, 0, 10, 10), 174, 384);
             gr.Content = grg;

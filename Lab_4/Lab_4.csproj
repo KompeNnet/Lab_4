@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IPlugin">
-      <HintPath>..\Dlls\IPlugin\bin\Debug\IPlugin.dll</HintPath>
-    </Reference>
     <Reference Include="MainDll">
       <HintPath>..\Dlls\MainDll\MainDll\bin\Debug\MainDll.dll</HintPath>
     </Reference>
@@ -71,31 +68,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Books\Book.cs" />
-    <Compile Include="Books\Encyclopedia.cs" />
-    <Compile Include="Books\Fiction.cs" />
-    <Compile Include="Books\Fictions\FairyTales.cs" />
-    <Compile Include="Books\Fictions\FantasticTales.cs" />
-    <Compile Include="Books\Fictions\ScienceFiction.cs" />
-    <Compile Include="Books\Fictions\Travelling.cs" />
-    <Compile Include="Books\Historical.cs" />
-    <Compile Include="Books\History\Art.cs" />
-    <Compile Include="Books\History\Biography.cs" />
-    <Compile Include="Helpers\FormCreator.cs" />
-    <Compile Include="Helpers\Hierarchy.cs" />
-    <Compile Include="Helpers\ItemInList.cs" />
-    <Compile Include="Helpers\LoaderManager.cs" />
-    <Compile Include="Helpers\Serializer.cs" />
-    <Compile Include="Loaders\BookLoader.cs" />
-    <Compile Include="Loaders\EncyclopediaLoader.cs" />
-    <Compile Include="Loaders\FictionLoader.cs" />
-    <Compile Include="Loaders\FictionsLoaders\FairyTalesLoader.cs" />
-    <Compile Include="Loaders\FictionsLoaders\FantasticTalesLoader.cs" />
-    <Compile Include="Loaders\FictionsLoaders\ScienceFictionLoader.cs" />
-    <Compile Include="Loaders\FictionsLoaders\TravellingLoader.cs" />
-    <Compile Include="Loaders\HistoricalLoader.cs" />
-    <Compile Include="Loaders\HistoryLoaders\ArtLoader.cs" />
-    <Compile Include="Loaders\HistoryLoaders\BiographyLoader.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

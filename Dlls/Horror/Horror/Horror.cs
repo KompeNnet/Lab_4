@@ -3,7 +3,7 @@
     public class Horror : Fiction
     {
         public string Age { get; set; }
-        public bool Psyhological { get; set; }
+        public bool IsPsyhological { get; set; }
 
         public Horror() { }
 
@@ -12,7 +12,7 @@
         public Horror(Horror t) : base(t)
         {
             this.Age = t.Age;
-            this.Psyhological = t.Psyhological;
+            this.IsPsyhological = t.IsPsyhological;
         }
     }
 }

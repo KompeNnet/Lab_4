@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IPlugin">
-      <HintPath>..\..\IPlugin\bin\Debug\IPlugin.dll</HintPath>
-    </Reference>
     <Reference Include="MainDll, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MainDll\MainDll\bin\Debug\MainDll.dll</HintPath>
