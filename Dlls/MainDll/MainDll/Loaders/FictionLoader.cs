@@ -9,7 +9,7 @@ namespace Lab_4.Loaders
 {
     public class FictionLoader : BookLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
             Fiction f = new Fiction(base.Create(g));
 
@@ -22,14 +22,15 @@ namespace Lab_4.Loaders
             return f;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Fiction(base.Create(g));
         }
 
-        public override Grid Load(dynamic f)
+        public override Grid Load(Book fTemp)
         {
-            Grid g = base.Load((Book)f);
+            Grid g = base.Load(fTemp);
+            Fiction f = (Fiction)fTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Type (original, fanfiction)", new Thickness(10, 9, 0, 0)));

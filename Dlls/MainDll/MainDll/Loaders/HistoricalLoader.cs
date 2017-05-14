@@ -9,7 +9,7 @@ namespace Lab_4.Loaders
 {
     public class HistoricalLoader : BookLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
             Historical h = new Historical(base.Create(g));
 
@@ -21,14 +21,15 @@ namespace Lab_4.Loaders
             return h;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Historical(base.Create(g));
         }
 
-        public override Grid Load(dynamic h)
+        public override Grid Load(Book hTemp)
         {
-            Grid g = base.Load((Book)h);
+            Grid g = base.Load(hTemp);
+            Historical h = (Historical)hTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Period", new Thickness(10, 10, 0, 0)));

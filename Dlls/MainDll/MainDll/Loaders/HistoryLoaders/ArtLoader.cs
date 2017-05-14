@@ -10,9 +10,9 @@ namespace Lab_4.Loaders.HistoryLoaders
 {
     public class ArtLoader : HistoricalLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            Art a = new Art(base.Create(g));
+            Art a = new Art((Historical)base.Create(g));
 
             GroupBox artGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "HistArtGroup");
             IEnumerable<TextBox> tbList = ((Grid)artGroupBox.Content).Children.OfType<TextBox>();
@@ -21,14 +21,15 @@ namespace Lab_4.Loaders.HistoryLoaders
             return a;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
-            return new Art(base.Create(g));
+            return new Art((Historical)base.Create(g));
         }
 
-        public override Grid Load(dynamic a)
+        public override Grid Load(Book aTemp)
         {
-            Grid g = base.Load((Historical)a);
+            Grid g = base.Load((Historical)aTemp);
+            Art a = (Art)aTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Form of art", new Thickness(10, 10, 73, 0)));

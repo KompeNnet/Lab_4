@@ -4,14 +4,15 @@ using System.Windows;
 using System.Windows.Controls;
 using Lab_4.Books.Fictions;
 using Lab_4.Helpers;
+using Lab_4.Books;
 
 namespace Lab_4.Loaders.FictionsLoaders
 {
     public class ScienceFictionLoader : FantasticTalesLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            ScienceFiction s = new ScienceFiction(base.Create(g));
+            ScienceFiction s = new ScienceFiction((FantasticTales)base.Create(g));
 
             GroupBox sfGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "FictFantScienceFictionGroup");
             IEnumerable<CheckBox> chbList = ((Grid)sfGroupBox.Content).Children.OfType<CheckBox>();
@@ -20,14 +21,15 @@ namespace Lab_4.Loaders.FictionsLoaders
             return s;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
-            return new ScienceFiction(base.Create(g));
+            return new ScienceFiction((FantasticTales)base.Create(g));
         }
 
-        public override Grid Load(dynamic s)
+        public override Grid Load(Book sTemp)
         {
-            Grid g = base.Load((FantasticTales)s);
+            Grid g = base.Load((FantasticTales)sTemp);
+            ScienceFiction s = (ScienceFiction)sTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateCheckBox("CheckFictFantFairyIsEarth", "is Earth", new Thickness(10, 10, 10, 0), s.IsEarth));

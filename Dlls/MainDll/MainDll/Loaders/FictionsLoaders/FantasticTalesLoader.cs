@@ -10,9 +10,9 @@ namespace Lab_4.Loaders.FictionsLoaders
 {
     public class FantasticTalesLoader : FictionLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            FantasticTales f = new FantasticTales(base.Create(g));
+            FantasticTales f = new FantasticTales((Fiction)base.Create(g));
 
             GroupBox ftGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "FictFantasticTalesGroup");
             IEnumerable<TextBox> tbList = ((Grid)ftGroupBox.Content).Children.OfType<TextBox>();
@@ -21,14 +21,15 @@ namespace Lab_4.Loaders.FictionsLoaders
             return f;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
-            return new FantasticTales(base.Create(g));
+            return new FantasticTales((Fiction)base.Create(g));
         }
 
-        public override Grid Load(dynamic f)
+        public override Grid Load(Book fTemp)
         {
-            Grid g = base.Load((Fiction)f);
+            Grid g = base.Load((Fiction)fTemp);
+            FantasticTales f = (FantasticTales)fTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("coWorkers", new Thickness(10, 9, 0, 0)));

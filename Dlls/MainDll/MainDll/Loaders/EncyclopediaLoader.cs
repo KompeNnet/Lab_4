@@ -9,7 +9,7 @@ namespace Lab_4.Loaders
 {
     public class EncyclopediaLoader : BookLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
             Encyclopedia e = new Encyclopedia(base.Create(g));
 
@@ -21,14 +21,15 @@ namespace Lab_4.Loaders
             return e;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Encyclopedia(base.Create(g));
         }
 
-        public override Grid Load(dynamic e)
+        public override Grid Load(Book eTemp)
         {
-            Grid g = base.Load((Book)e);
+            Grid g = base.Load(eTemp);
+            Encyclopedia e = (Encyclopedia)eTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Subject", new Thickness(10, 10, 0, 0)));

@@ -14,7 +14,7 @@ namespace Lab_4.Loaders
 {
     public class BookLoader
     {
-        public virtual dynamic Create(GroupBox g)
+        public virtual Book Create(GroupBox g)
         {
             Book b = new Book();
             IEnumerable<TextBox> tbList = ((Grid)g.Content).Children.OfType<TextBox>();
@@ -25,12 +25,12 @@ namespace Lab_4.Loaders
             return b;
         }
 
-        public virtual dynamic BaseCreate(GroupBox g)
+        public virtual Book BaseCreate(GroupBox g)
         {
             return Create(g);
         }
 
-        public virtual Grid Load(dynamic b)
+        public virtual Grid Load(Book b)
         {
             Grid g = new Grid();
             g.Children.Add(FormCreator.CreateLabel("Author", new Thickness(10, 27, 0, 0)));
@@ -82,7 +82,7 @@ namespace Lab_4.Loaders
             GroupBox gr = GetMainGroupBox(sender);                  // MainGroupBox
             Grid g = (Grid)gr.Parent;                               // MainGrid
 
-            dynamic book = Create(gr);                              // create new book based on layout
+            Book book = Create(gr);                              // create new book based on layout
 
             var temp = ((Grid)gr.Content).Children;                 // get all children of MainGroupBox
             string type;
@@ -114,7 +114,7 @@ namespace Lab_4.Loaders
             GroupBox gr = GetMainGroupBox(sender);
             Grid g = (Grid)gr.Parent;
 
-            dynamic book = Create(gr);
+            Book book = Create(gr);
 
             var temp = ((Grid)gr.Content).Children;
             string type;
@@ -251,7 +251,7 @@ namespace Lab_4.Loaders
                     GroupBox gr = GetMainGroupBox(sender);                  // MainGroupBox
                     Grid g = (Grid)gr.Parent;                               // MainGrid
 
-                    dynamic book = Create(gr);                              // create new book based on layout
+                    Book book = Create(gr);                              // create new book based on layout
 
                     var temp = ((Grid)gr.Content).Children;                 // get all children of MainGroupBox
                     string type;
