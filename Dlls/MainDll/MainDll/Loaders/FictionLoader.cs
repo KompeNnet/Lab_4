@@ -22,7 +22,7 @@ namespace Lab_4.Loaders
             return f;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Fiction(base.Create(g));
         }

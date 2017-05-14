@@ -21,7 +21,7 @@ namespace Lab_4.Loaders.FictionsLoaders
             return s;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new ScienceFiction((FantasticTales)base.Create(g));
         }

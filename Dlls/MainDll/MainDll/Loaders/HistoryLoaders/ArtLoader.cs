@@ -21,7 +21,7 @@ namespace Lab_4.Loaders.HistoryLoaders
             return a;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Art((Historical)base.Create(g));
         }

@@ -22,7 +22,7 @@ namespace Lab_4.Loaders.HistoryLoaders
             return b;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Biography((Historical)base.Create(g));
         }

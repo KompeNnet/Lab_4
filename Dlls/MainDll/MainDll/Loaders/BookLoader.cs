@@ -25,7 +25,7 @@ namespace Lab_4.Loaders
             return b;
         }
 
-        public virtual dynamic BaseCreate(GroupBox g)
+        public virtual Book BaseCreate(GroupBox g)
         {
             return Create(g);
         }

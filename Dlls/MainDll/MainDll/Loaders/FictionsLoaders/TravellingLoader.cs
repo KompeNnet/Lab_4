@@ -21,7 +21,7 @@ namespace Lab_4.Loaders.FictionsLoaders
             return t;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Travelling((Fiction)base.Create(g));
         }

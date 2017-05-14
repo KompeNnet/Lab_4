@@ -21,7 +21,7 @@ namespace Lab_4.Loaders
             return e;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Encyclopedia(base.Create(g));
         }

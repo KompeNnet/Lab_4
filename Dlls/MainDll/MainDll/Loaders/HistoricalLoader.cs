@@ -21,7 +21,7 @@ namespace Lab_4.Loaders
             return h;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
             return new Historical(base.Create(g));
         }
