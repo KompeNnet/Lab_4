@@ -2,7 +2,7 @@
 {
     public class Horror : Fiction
     {
-        public string Age { get; set; }
+        public string Theme { get; set; }
         public bool IsPsyhological { get; set; }
 
         public Horror() { }
@@ -11,7 +11,7 @@
 
         public Horror(Horror t) : base(t)
         {
-            this.Age = t.Age;
+            this.Theme = t.Theme;
             this.IsPsyhological = t.IsPsyhological;
         }
     }
