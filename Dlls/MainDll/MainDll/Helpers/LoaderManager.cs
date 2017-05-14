@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Lab_4.Books;
-using Lab_4.Books.Fictions;
-using Lab_4.Books.History;
 using Lab_4.Loaders;
 using Lab_4.Loaders.FictionsLoaders;
 using Lab_4.Loaders.HistoryLoaders;
