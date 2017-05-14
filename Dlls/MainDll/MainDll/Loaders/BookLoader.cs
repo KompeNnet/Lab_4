@@ -82,7 +82,7 @@ namespace Lab_4.Loaders
             GroupBox gr = GetMainGroupBox(sender);                  // MainGroupBox
             Grid g = (Grid)gr.Parent;                               // MainGrid
 
-            dynamic book = Create(gr);                              // create new book based on layout
+            Book book = Create(gr);                              // create new book based on layout
 
             var temp = ((Grid)gr.Content).Children;                 // get all children of MainGroupBox
             string type;
@@ -114,7 +114,7 @@ namespace Lab_4.Loaders
             GroupBox gr = GetMainGroupBox(sender);
             Grid g = (Grid)gr.Parent;
 
-            dynamic book = Create(gr);
+            Book book = Create(gr);
 
             var temp = ((Grid)gr.Content).Children;
             string type;
