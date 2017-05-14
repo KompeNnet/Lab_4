@@ -30,7 +30,7 @@ namespace Lab_4.Loaders
             return Create(g);
         }
 
-        public virtual Grid Load(dynamic b)
+        public virtual Grid Load(Book b)
         {
             Grid g = new Grid();
             g.Children.Add(FormCreator.CreateLabel("Author", new Thickness(10, 27, 0, 0)));

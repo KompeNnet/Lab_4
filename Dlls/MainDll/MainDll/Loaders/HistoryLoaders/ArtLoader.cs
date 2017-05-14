@@ -26,9 +26,10 @@ namespace Lab_4.Loaders.HistoryLoaders
             return new Art((Historical)base.Create(g));
         }
 
-        public override Grid Load(dynamic a)
+        public override Grid Load(Book aTemp)
         {
-            Grid g = base.Load((Historical)a);
+            Grid g = base.Load((Historical)aTemp);
+            Art a = (Art)aTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Form of art", new Thickness(10, 10, 73, 0)));

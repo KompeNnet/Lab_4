@@ -26,9 +26,10 @@ namespace Lab_4.Loaders.FictionsLoaders
             return new Travelling((Fiction)base.Create(g));
         }
 
-        public override Grid Load(dynamic t)
+        public override Grid Load(Book tTemp)
         {
-            Grid g = base.Load((Fiction)t);
+            Grid g = base.Load((Fiction)tTemp);
+            Travelling t = (Travelling)tTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Countries", new Thickness(10, 10, 45, 0)));

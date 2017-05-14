@@ -26,9 +26,10 @@ namespace Lab_4.Loaders.FictionsLoaders
             return new ScienceFiction((FantasticTales)base.Create(g));
         }
 
-        public override Grid Load(dynamic s)
+        public override Grid Load(Book sTemp)
         {
-            Grid g = base.Load((FantasticTales)s);
+            Grid g = base.Load((FantasticTales)sTemp);
+            ScienceFiction s = (ScienceFiction)sTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateCheckBox("CheckFictFantFairyIsEarth", "is Earth", new Thickness(10, 10, 10, 0), s.IsEarth));

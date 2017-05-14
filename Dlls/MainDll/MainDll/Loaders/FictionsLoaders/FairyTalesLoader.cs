@@ -26,9 +26,10 @@ namespace Lab_4.Loaders.FictionsLoaders
             return new FairyTales((FantasticTales)base.Create(g));
         }
 
-        public override Grid Load(dynamic f)
+        public override Grid Load(Book fTemp)
         {
-            Grid g = base.Load((FantasticTales)f);
+            Grid g = base.Load((FantasticTales)fTemp);
+            FairyTales f = (FairyTales)fTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateCheckBox("CheckFictFantFairyIsIllustrated", "is illustrated", new Thickness(10, 9, 0, 0), f.IsIllustrated));

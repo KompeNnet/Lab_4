@@ -26,9 +26,10 @@ namespace Lab_4.Loaders.FictionsLoaders
             return new FantasticTales((Fiction)base.Create(g));
         }
 
-        public override Grid Load(dynamic f)
+        public override Grid Load(Book fTemp)
         {
-            Grid g = base.Load((Fiction)f);
+            Grid g = base.Load((Fiction)fTemp);
+            FantasticTales f = (FantasticTales)fTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("coWorkers", new Thickness(10, 9, 0, 0)));

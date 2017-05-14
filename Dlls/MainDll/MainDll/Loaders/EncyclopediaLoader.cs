@@ -26,9 +26,10 @@ namespace Lab_4.Loaders
             return new Encyclopedia(base.Create(g));
         }
 
-        public override Grid Load(dynamic e)
+        public override Grid Load(Book eTemp)
         {
-            Grid g = base.Load((Book)e);
+            Grid g = base.Load(eTemp);
+            Encyclopedia e = (Encyclopedia)eTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Subject", new Thickness(10, 10, 0, 0)));

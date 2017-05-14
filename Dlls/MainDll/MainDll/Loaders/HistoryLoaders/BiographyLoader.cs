@@ -27,9 +27,10 @@ namespace Lab_4.Loaders.HistoryLoaders
             return new Biography((Historical)base.Create(g));
         }
 
-        public override Grid Load(dynamic b)
+        public override Grid Load(Book bTemp)
         {
-            Grid g = base.Load((Historical)b);
+            Grid g = base.Load((Historical)bTemp);
+            Biography b = (Biography)bTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Person", new Thickness(10, 10, 73, 0)));
