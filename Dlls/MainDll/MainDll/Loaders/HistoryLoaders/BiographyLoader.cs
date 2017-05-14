@@ -10,9 +10,9 @@ namespace Lab_4.Loaders.HistoryLoaders
 {
     public class BiographyLoader : HistoricalLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            Biography b = new Biography(base.Create(g));
+            Biography b = new Biography((Historical)base.Create(g));
 
             GroupBox bioGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "HistBiographyGroup");
             IEnumerable<TextBox> tbList = ((Grid)bioGroupBox.Content).Children.OfType<TextBox>();
@@ -24,7 +24,7 @@ namespace Lab_4.Loaders.HistoryLoaders
 
         public override dynamic BaseCreate(GroupBox g)
         {
-            return new Biography(base.Create(g));
+            return new Biography((Historical)base.Create(g));
         }
 
         public override Grid Load(dynamic b)

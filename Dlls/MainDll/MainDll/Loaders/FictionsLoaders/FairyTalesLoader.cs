@@ -4,14 +4,15 @@ using System.Windows;
 using System.Windows.Controls;
 using Lab_4.Books.Fictions;
 using Lab_4.Helpers;
+using Lab_4.Books;
 
 namespace Lab_4.Loaders.FictionsLoaders
 {
     public class FairyTalesLoader : FantasticTalesLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            FairyTales f = new FairyTales(base.Create(g));
+            FairyTales f = new FairyTales((FantasticTales)base.Create(g));
 
             GroupBox fairyGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "FictFantFairyTalesGroup");
             IEnumerable<CheckBox> chbList = ((Grid)fairyGroupBox.Content).Children.OfType<CheckBox>();
@@ -22,7 +23,7 @@ namespace Lab_4.Loaders.FictionsLoaders
 
         public override dynamic BaseCreate(GroupBox g)
         {
-            return new FairyTales(base.Create(g));
+            return new FairyTales((FantasticTales)base.Create(g));
         }
 
         public override Grid Load(dynamic f)

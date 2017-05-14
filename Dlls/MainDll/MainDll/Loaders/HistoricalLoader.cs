@@ -9,7 +9,7 @@ namespace Lab_4.Loaders
 {
     public class HistoricalLoader : BookLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
             Historical h = new Historical(base.Create(g));
 

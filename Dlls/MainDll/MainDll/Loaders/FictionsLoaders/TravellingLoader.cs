@@ -10,9 +10,9 @@ namespace Lab_4.Loaders.FictionsLoaders
 {
     public class TravellingLoader : FictionLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            Travelling t = new Travelling(base.Create(g));
+            Travelling t = new Travelling((Fiction)base.Create(g));
 
             GroupBox travelGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "FictTravellingGroup");
             IEnumerable<TextBox> tbList = ((Grid)travelGroupBox.Content).Children.OfType<TextBox>();
@@ -23,7 +23,7 @@ namespace Lab_4.Loaders.FictionsLoaders
 
         public override dynamic BaseCreate(GroupBox g)
         {
-            return new Travelling(base.Create(g));
+            return new Travelling((Fiction)base.Create(g));
         }
 
         public override Grid Load(dynamic t)

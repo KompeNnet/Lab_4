@@ -10,9 +10,9 @@ namespace Lab_4.Loaders.FictionsLoaders
 {
     public class FantasticTalesLoader : FictionLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            FantasticTales f = new FantasticTales(base.Create(g));
+            FantasticTales f = new FantasticTales((Fiction)base.Create(g));
 
             GroupBox ftGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "FictFantasticTalesGroup");
             IEnumerable<TextBox> tbList = ((Grid)ftGroupBox.Content).Children.OfType<TextBox>();
@@ -23,7 +23,7 @@ namespace Lab_4.Loaders.FictionsLoaders
 
         public override dynamic BaseCreate(GroupBox g)
         {
-            return new FantasticTales(base.Create(g));
+            return new FantasticTales((Fiction)base.Create(g));
         }
 
         public override Grid Load(dynamic f)

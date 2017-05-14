@@ -14,7 +14,7 @@ namespace Lab_4.Loaders
 {
     public class BookLoader
     {
-        public virtual dynamic Create(GroupBox g)
+        public virtual Book Create(GroupBox g)
         {
             Book b = new Book();
             IEnumerable<TextBox> tbList = ((Grid)g.Content).Children.OfType<TextBox>();

@@ -9,7 +9,7 @@ namespace Lab_4.Loaders
 {
     public class EncyclopediaLoader : BookLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
             Encyclopedia e = new Encyclopedia(base.Create(g));
 
