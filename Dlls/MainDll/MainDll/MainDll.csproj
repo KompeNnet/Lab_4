@@ -72,7 +72,7 @@
     <Compile Include="Loaders\HistoricalLoader.cs" />
     <Compile Include="Loaders\HistoryLoaders\ArtLoader.cs" />
     <Compile Include="Loaders\HistoryLoaders\BiographyLoader.cs" />
-    <Compile Include="Loaders\Structure.cs" />
+    <Compile Include="Helpers\Structure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

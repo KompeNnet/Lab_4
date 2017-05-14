@@ -10,9 +10,9 @@ namespace Lab_4.Loaders.FictionsLoaders
 {
     public class HorrorLoader : FictionLoader
     {
-        public override dynamic Create(GroupBox g)
+        public override Book Create(GroupBox g)
         {
-            Horror t = new Horror(base.Create(g));
+            Horror t = new Horror((Fiction)base.Create(g));
 
             GroupBox horrorGroupBox = ((Grid)g.Content).Children.OfType<GroupBox>().First(x => x.Name == "FictHorrorGroup");
             IEnumerable<TextBox> tbList = ((Grid)horrorGroupBox.Content).Children.OfType<TextBox>();
@@ -25,14 +25,15 @@ namespace Lab_4.Loaders.FictionsLoaders
             return t;
         }
 
-        public override dynamic BaseCreate(GroupBox g)
+        public override Book BaseCreate(GroupBox g)
         {
-            return new Horror(base.Create(g));
+            return new Horror((Fiction)base.Create(g));
         }
 
-        public override Grid Load(dynamic h)
+        public override Grid Load(Book hTemp)
         {
-            Grid g = base.Load((Fiction)h);
+            Grid g = base.Load((Fiction)hTemp);
+            Horror h = (Horror)hTemp;
 
             Grid grg = FormCreator.CreateGrid(new Thickness(0, 0, 0, 0));
             grg.Children.Add(FormCreator.CreateLabel("Age limit", new Thickness(10, 10, 73, 0)));

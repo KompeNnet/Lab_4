@@ -10,7 +10,7 @@ namespace Lab_4.Helpers
             return JsonConvert.SerializeObject(smth);
         }
 
-        public static dynamic Deserialize<T>(dynamic smth)
+        public static T Deserialize<T>(string smth)
         {
             return JsonConvert.DeserializeObject<T>(smth);
         }
