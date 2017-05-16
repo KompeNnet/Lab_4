@@ -293,7 +293,7 @@ namespace Lab_4.Loaders
             }
         }
 
-        public virtual dynamic Deserialize(dynamic d)
+        public virtual Book Deserialize(string d)
         {
             return Serializer.Deserialize<Book>(d);
         }

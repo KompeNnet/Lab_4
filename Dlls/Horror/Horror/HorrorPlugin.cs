@@ -3,7 +3,7 @@ using Lab_4.Loaders.FictionsLoaders;
 using Lab_4.Books.Fictions;
 using Lab_4.Helpers;
 
-namespace Lab_4.Loaders
+namespace Lab_4
 {
     public class HorrorPlugin : IPlugin
     {

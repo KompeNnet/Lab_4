@@ -3,7 +3,7 @@ using Lab_4.Books.History;
 using Lab_4.Helpers;
 using Lab_4.Loaders.HistoryLoaders;
 
-namespace Lab_4.Loaders
+namespace Lab_4
 {
     public class DetectivePlugin : IPlugin
     {
